@@ -102,7 +102,7 @@ function onFileChange(e) {
 function onDoubleClick(e) {
   const text = textInput.value;
   if (text !== "") {
-    ctx.font = "68px 'Press Start 2p'";
+    ctx.font = "68px sans-serif";
     ctx.fillText(text, e.offsetX, e.offsetY);
   }
 }
