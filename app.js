@@ -1,5 +1,6 @@
 const canvas = document.querySelector("canvas");
 const inputWith = document.getElementById("input-width");
+const fontRange = document.getElementById("font-range");
 const color = document.getElementById("color");
 const ctx = canvas.getContext("2d");
 const colorOptions = Array.from(
@@ -16,6 +17,7 @@ const CANVAS_HIGHT = 800;
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HIGHT;
 ctx.lineWidth = inputWith.value;
+ctx.font = `${fontRange.value}px sans-serif`;
 ctx.lineCap = "round";
 const colors = [
   "#ff3838",
@@ -102,7 +104,6 @@ function onFileChange(e) {
 function onDoubleClick(e) {
   const text = textInput.value;
   if (text !== "") {
-    ctx.font = "68px sans-serif";
     ctx.fillText(text, e.offsetX, e.offsetY);
   }
 }
@@ -113,6 +114,9 @@ function onSaveImage() {
   a.href = url;
   a.download = "myDrawing.png";
   a.click();
+}
+function onFontSizeChange() {
+  ctx.font = `${fontRange.value}px sans-serif`;
 }
 
 canvas.addEventListener("mousemove", onMove);
@@ -129,3 +133,4 @@ eraserBtn.addEventListener("click", onEraseClick);
 fileInput.addEventListener("change", onFileChange);
 canvas.addEventListener("dblclick", onDoubleClick);
 saveBtn.addEventListener("click", onSaveImage);
+fontRange.addEventListener("change", onFontSizeChange);
